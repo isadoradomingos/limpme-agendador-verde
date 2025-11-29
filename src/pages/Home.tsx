@@ -37,7 +37,7 @@ const Home = () => {
                 size="lg"
                 className="w-full animate-fade-in"
                 style={{ animationDelay: "0.2s" }}
-                onClick={() => navigate("/planos")}
+                onClick={() => window.open("https://limpme.com/", "_blank")}
               >
                 <FileText className="w-5 h-5" />
                 Consulte nossos planos e serviços
