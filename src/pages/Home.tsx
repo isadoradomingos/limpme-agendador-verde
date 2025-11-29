@@ -34,7 +34,7 @@ const Home = () => {
                 size="xl"
                 className="w-full animate-fade-in"
                 style={{ animationDelay: "0.1s" }}
-                onClick={() => navigate("/agendar")}
+                onClick={() => navigate("/auth")}
               >
                 <Calendar className="w-5 h-5" />
                 Agendar limpeza
