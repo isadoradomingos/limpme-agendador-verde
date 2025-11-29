@@ -1,15 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { MessageCircle, Calendar, FileText } from "lucide-react";
+import familyBg from "@/assets/happy-family-bg.jpg";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gradient-hero">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-primary opacity-10"></div>
+      {/* Hero Section with Background Image */}
+      <div className="relative overflow-hidden min-h-screen">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${familyBg})` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background/95"></div>
+        </div>
+        
         <div className="relative px-6 pt-16 pb-12">
           <div className="mx-auto max-w-md text-center animate-fade-in">
             <h1 className="text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-3">
