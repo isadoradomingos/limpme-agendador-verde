@@ -10,11 +10,19 @@ const Home = () => {
     <div className="min-h-screen bg-gradient-hero">
       {/* Hero Section with Background Image */}
       <div className="relative overflow-hidden min-h-screen">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${familyBg})` }}
-        >
+        {/* Background Image as an <img> for better responsive focal control */}
+        <div className="absolute inset-0">
+          {/*
+            Use object-position responsively: on mobile (default) show the top of the image
+            so faces are not cropped (object-top). On md+ keep object-center.
+          */}
+          <img
+            src={familyBg}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-top md:object-center"
+          />
+
           {/* Overlay reduzido: menos esbranquiçado/menos opaco para deixar o fundo mais visível */}
           <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background/20 pointer-events-none" aria-hidden="true"></div>
         </div>
