@@ -61,7 +61,7 @@ const Home = () => {
               </Button>
 
               <Button
-                variant="whatsapp"
+                variant="gradient"
                 size="lg"
                 className="w-full animate-fade-in"
                 style={{ animationDelay: "0.3s" }}
