@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { MapPin, ChevronRight, ArrowLeft } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { ChevronRight, ArrowLeft } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import ProgressSteps from "@/components/ProgressSteps";
 
 const cities = ["Florianópolis", "São José", "Palhoça", "Biguaçu"];
 
@@ -28,7 +35,10 @@ const SelectLocation = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero">
-      <div className="px-6 py-8">
+      {/* Progress Steps */}
+      <ProgressSteps currentStep={1} totalSteps={3} />
+      
+      <div className="px-6 py-4">
         <div className="mx-auto max-w-md">
           {/* Header */}
           <div className="mb-8 animate-fade-in">
@@ -50,53 +60,51 @@ const SelectLocation = () => {
           </div>
 
           {/* City Selection */}
-          <div className="mb-8 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            <div className="flex items-center gap-2 mb-4">
-              <MapPin className="w-5 h-5 text-primary" />
-              <h2 className="text-xl font-semibold text-foreground">Cidade</h2>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {cities.map((city) => (
-                <Card
-                  key={city}
-                  className={`p-4 cursor-pointer transition-all hover:shadow-soft ${
-                    selectedCity === city
-                      ? "bg-gradient-primary text-white shadow-soft"
-                      : "bg-card hover:border-primary"
-                  }`}
-                  onClick={() => {
-                    setSelectedCity(city);
-                    setSelectedNeighborhood("");
-                  }}
-                >
-                  <p className="font-medium text-center">{city}</p>
-                </Card>
-              ))}
-            </div>
+          <div className="mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+            <label className="text-sm font-semibold text-foreground mb-2 block">
+              Cidade
+            </label>
+            <Select
+              value={selectedCity}
+              onValueChange={(value) => {
+                setSelectedCity(value);
+                setSelectedNeighborhood("");
+              }}
+            >
+              <SelectTrigger className="w-full h-12 text-base">
+                <SelectValue placeholder="Selecione sua cidade" />
+              </SelectTrigger>
+              <SelectContent>
+                {cities.map((city) => (
+                  <SelectItem key={city} value={city} className="text-base">
+                    {city}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           {/* Neighborhood Selection */}
           {selectedCity && (
             <div className="mb-8 animate-fade-in">
-              <div className="flex items-center gap-2 mb-4">
-                <MapPin className="w-5 h-5 text-accent" />
-                <h2 className="text-xl font-semibold text-foreground">Bairro</h2>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                {neighborhoods[selectedCity].map((neighborhood) => (
-                  <Card
-                    key={neighborhood}
-                    className={`p-4 cursor-pointer transition-all hover:shadow-soft ${
-                      selectedNeighborhood === neighborhood
-                        ? "bg-gradient-primary text-white shadow-soft"
-                        : "bg-card hover:border-primary"
-                    }`}
-                    onClick={() => setSelectedNeighborhood(neighborhood)}
-                  >
-                    <p className="font-medium text-center text-sm">{neighborhood}</p>
-                  </Card>
-                ))}
-              </div>
+              <label className="text-sm font-semibold text-foreground mb-2 block">
+                Bairro
+              </label>
+              <Select
+                value={selectedNeighborhood}
+                onValueChange={setSelectedNeighborhood}
+              >
+                <SelectTrigger className="w-full h-12 text-base">
+                  <SelectValue placeholder="Selecione seu bairro" />
+                </SelectTrigger>
+                <SelectContent>
+                  {neighborhoods[selectedCity].map((neighborhood) => (
+                    <SelectItem key={neighborhood} value={neighborhood} className="text-base">
+                      {neighborhood}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           )}
 

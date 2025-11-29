@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { MessageCircle, Calendar, FileText } from "lucide-react";
-import heroImage from "@/assets/hero-car.jpg";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -16,18 +15,9 @@ const Home = () => {
             <h1 className="text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-3">
               LimpMe
             </h1>
-            <p className="text-lg text-muted-foreground font-medium mb-8">
+            <p className="text-lg text-muted-foreground font-medium mb-12">
               sua limpeza automotiva por assinatura
             </p>
-            
-            {/* Hero Image */}
-            <div className="mb-8 rounded-2xl overflow-hidden shadow-elevated">
-              <img 
-                src={heroImage} 
-                alt="Carro limpo e reluzente" 
-                className="w-full h-48 object-cover"
-              />
-            </div>
 
             {/* Action Buttons */}
             <div className="space-y-4">
