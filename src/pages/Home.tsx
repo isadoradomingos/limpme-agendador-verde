@@ -24,7 +24,7 @@ const Home = () => {
             <h1 className="text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-3">
               LimpMe
             </h1>
-            <p className="text-lg text-muted-foreground font-medium mb-12">
+            <p className="text-lg text-white font-medium mb-12">
               Sua limpeza automotiva por assinatura
             </p>
 
