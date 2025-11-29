@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Star, Award, CheckCircle, ArrowLeft } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { toast } from "sonner";
@@ -16,7 +15,6 @@ const technicians = [
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos",
     rating: 4.9,
     reviews: 127,
-    specialties: ["Limpeza completa", "Polimento"],
     verified: true,
     experience: "5 anos",
   },
@@ -26,7 +24,6 @@ const technicians = [
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Joao",
     rating: 4.8,
     reviews: 98,
-    specialties: ["Detalhamento", "Higienização"],
     verified: true,
     experience: "4 anos",
   },
@@ -36,7 +33,6 @@ const technicians = [
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Pedro",
     rating: 4.7,
     reviews: 85,
-    specialties: ["Limpeza interna", "Cristalização"],
     verified: true,
     experience: "3 anos",
   },
@@ -118,21 +114,9 @@ const SelectTechnician = () => {
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
                       <Award className="w-3 h-3" />
                       <span>{tech.experience} de experiência</span>
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {tech.specialties.map((specialty) => (
-                        <Badge
-                          key={specialty}
-                          variant="secondary"
-                          className="text-xs"
-                        >
-                          {specialty}
-                        </Badge>
-                      ))}
                     </div>
                   </div>
                 </div>
