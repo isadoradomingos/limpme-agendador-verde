@@ -23,7 +23,7 @@ const SelectDateTime = () => {
 
   const handleContinue = () => {
     if (selectedDate && selectedTime) {
-      navigate("/agendar/tecnicos", {
+      navigate("/select-technician", {
         state: { 
           city, 
           neighborhood,
@@ -46,7 +46,7 @@ const SelectDateTime = () => {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => navigate("/agendar")}
+              onClick={() => navigate("/select-location")}
               className="mb-4"
             >
               <ArrowLeft className="w-4 h-4" />

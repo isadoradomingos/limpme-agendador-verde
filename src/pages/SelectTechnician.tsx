@@ -7,6 +7,9 @@ import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { toast } from "sonner";
 import ProgressSteps from "@/components/ProgressSteps";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
+import { useState } from "react";
 
 const technicians = [
   {
@@ -41,16 +44,48 @@ const technicians = [
 const SelectTechnician = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { user } = useAuth();
   const { city, neighborhood, date, time } = location.state || {};
+  const [loading, setLoading] = useState(false);
 
-  const handleBooking = (technicianName: string) => {
-    toast.success("Agendamento confirmado!", {
-      description: `Técnico ${technicianName} foi notificado do seu agendamento.`,
-    });
+  const handleBooking = async (technicianName: string) => {
+    if (!user || !date) {
+      toast.error("Erro ao agendar", {
+        description: "Informações de agendamento incompletas.",
+      });
+      return;
+    }
+
+    setLoading(true);
     
-    setTimeout(() => {
-      navigate("/");
-    }, 2000);
+    try {
+      const { error } = await supabase.from("bookings").insert({
+        user_id: user.id,
+        technician_name: technicianName,
+        city: city || "",
+        neighborhood: neighborhood || "",
+        booking_date: format(date, "yyyy-MM-dd"),
+        booking_time: time || "",
+        status: "scheduled",
+      });
+
+      if (error) throw error;
+
+      toast.success("Agendamento confirmado!", {
+        description: `Técnico ${technicianName} foi notificado do seu agendamento.`,
+      });
+      
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 2000);
+    } catch (error) {
+      console.error("Error creating booking:", error);
+      toast.error("Erro ao criar agendamento", {
+        description: "Tente novamente mais tarde.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -65,7 +100,7 @@ const SelectTechnician = () => {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => navigate("/agendar/data-hora")}
+              onClick={() => navigate("/select-datetime")}
               className="mb-4"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -126,8 +161,9 @@ const SelectTechnician = () => {
                   size="lg"
                   className="w-full"
                   onClick={() => handleBooking(tech.name)}
+                  disabled={loading}
                 >
-                  Agendar com {tech.name.split(' ')[0]}
+                  {loading ? "Agendando..." : `Agendar com ${tech.name.split(' ')[0]}`}
                 </Button>
               </Card>
             ))}

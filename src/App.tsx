@@ -7,6 +7,8 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
+import Dashboard from "./pages/Dashboard";
+import MyBookings from "./pages/MyBookings";
 import SelectLocation from "./pages/SelectLocation";
 import SelectDateTime from "./pages/SelectDateTime";
 import SelectTechnician from "./pages/SelectTechnician";
@@ -26,7 +28,23 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/auth" element={<Auth />} />
             <Route
-              path="/agendar"
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/my-bookings"
+              element={
+                <ProtectedRoute>
+                  <MyBookings />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/select-location"
               element={
                 <ProtectedRoute>
                   <SelectLocation />
@@ -34,7 +52,7 @@ const App = () => (
               }
             />
             <Route
-              path="/agendar/data-hora"
+              path="/select-datetime"
               element={
                 <ProtectedRoute>
                   <SelectDateTime />
@@ -42,7 +60,7 @@ const App = () => (
               }
             />
             <Route
-              path="/agendar/tecnicos"
+              path="/select-technician"
               element={
                 <ProtectedRoute>
                   <SelectTechnician />
