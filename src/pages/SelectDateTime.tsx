@@ -83,7 +83,7 @@ const SelectDateTime = () => {
             <div className="mb-8 animate-fade-in">
               <div className="flex items-center gap-2 mb-4">
                 <Clock className="w-5 h-5 text-accent" />
-                <h2 className="text-xl font-semibold text-foreground">Horário disponível</h2>
+                <h2 className="text-xl font-semibold text-foreground">Horário</h2>
               </div>
               <div className="grid grid-cols-3 gap-3">
                 {timeSlots.map((time) => (
