@@ -24,7 +24,7 @@ const Home = () => {
               LimpMe
             </h1>
             <p className="text-lg text-muted-foreground font-medium mb-12">
-              sua limpeza automotiva por assinatura
+              Sua limpeza automotiva por assinatura
             </p>
 
             {/* Action Buttons */}
