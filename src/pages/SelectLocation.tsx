@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { ChevronRight, ArrowLeft } from "lucide-react";
+import { ChevronRight, ArrowLeft, LogOut } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -10,6 +10,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import ProgressSteps from "@/components/ProgressSteps";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+import { useAuth } from "@/contexts/AuthContext";
 
 const cities = ["Florianópolis", "São José", "Palhoça", "Biguaçu"];
 
@@ -22,6 +25,7 @@ const neighborhoods: Record<string, string[]> = {
 
 const SelectLocation = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [selectedCity, setSelectedCity] = useState<string>("");
   const [selectedNeighborhood, setSelectedNeighborhood] = useState<string>("");
 
@@ -33,6 +37,12 @@ const SelectLocation = () => {
     }
   };
 
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    toast.success("Logout realizado com sucesso!");
+    navigate("/");
+  };
+
   return (
     <div className="min-h-screen bg-gradient-hero">
       {/* Progress Steps */}
@@ -42,21 +52,35 @@ const SelectLocation = () => {
         <div className="mx-auto max-w-md">
           {/* Header */}
           <div className="mb-8 animate-fade-in">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate("/")}
-              className="mb-4"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Voltar
-            </Button>
+            <div className="flex items-center justify-between mb-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/")}
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Voltar
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleLogout}
+              >
+                <LogOut className="w-4 h-4" />
+                Sair
+              </Button>
+            </div>
             <h1 className="text-3xl font-bold text-foreground mb-2">
               Selecione sua localização
             </h1>
             <p className="text-muted-foreground">
               Escolha sua cidade e bairro para encontrar técnicos disponíveis
             </p>
+            {user && (
+              <p className="text-sm text-muted-foreground mt-2">
+                Logado como: {user.email}
+              </p>
+            )}
           </div>
 
           {/* City Selection */}
