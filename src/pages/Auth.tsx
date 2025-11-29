@@ -26,7 +26,7 @@ const Auth = () => {
   // Redirect if already logged in
   useEffect(() => {
     if (user) {
-      navigate("/agendar");
+      navigate("/dashboard");
     }
   }, [user, navigate]);
 
@@ -48,7 +48,7 @@ const Auth = () => {
     if (!validateForm()) return;
 
     setLoading(true);
-    const redirectUrl = `${window.location.origin}/agendar`;
+    const redirectUrl = `${window.location.origin}/dashboard`;
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -70,7 +70,7 @@ const Auth = () => {
     }
 
     toast.success("Conta criada com sucesso! Fazendo login...");
-    navigate("/agendar");
+    navigate("/dashboard");
   };
 
   const handleSignIn = async (e: React.FormEvent) => {
@@ -97,7 +97,7 @@ const Auth = () => {
     }
 
     toast.success("Login realizado com sucesso!");
-    navigate("/agendar");
+    navigate("/dashboard");
   };
 
   return (

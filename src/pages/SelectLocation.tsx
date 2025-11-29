@@ -31,7 +31,7 @@ const SelectLocation = () => {
 
   const handleContinue = () => {
     if (selectedCity && selectedNeighborhood) {
-      navigate("/agendar/data-hora", {
+      navigate("/select-datetime", {
         state: { city: selectedCity, neighborhood: selectedNeighborhood }
       });
     }
@@ -56,7 +56,7 @@ const SelectLocation = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/dashboard")}
               >
                 <ArrowLeft className="w-4 h-4" />
                 Voltar
