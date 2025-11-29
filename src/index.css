@@ -17,9 +17,9 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 210 20% 15%;
 
-    --primary: 185 80% 45%;
+    --primary: 152 98% 35%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 185 90% 60%;
+    --primary-glow: 152 90% 50%;
 
     --secondary: 210 25% 95%;
     --secondary-foreground: 210 20% 15%;
@@ -39,10 +39,10 @@ All colors MUST be HSL.
 
     --radius: 1rem;
     
-    --gradient-primary: linear-gradient(135deg, hsl(175, 75%, 50%), hsl(210, 80%, 55%));
-    --gradient-hero: linear-gradient(180deg, hsl(0, 0%, 100%), hsl(185, 90%, 97%));
-    --shadow-soft: 0 4px 20px -4px hsl(185 80% 45% / 0.15);
-    --shadow-elevated: 0 10px 40px -10px hsl(185 80% 45% / 0.25);
+    --gradient-primary: linear-gradient(135deg, hsl(152, 95%, 40%), hsl(210, 80%, 55%));
+    --gradient-hero: linear-gradient(180deg, hsl(0, 0%, 100%), hsl(152, 70%, 97%));
+    --shadow-soft: 0 4px 20px -4px hsl(152 98% 35% / 0.15);
+    --shadow-elevated: 0 10px 40px -10px hsl(152 98% 35% / 0.25);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
@@ -72,9 +72,9 @@ All colors MUST be HSL.
     --popover: 210 25% 10%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 185 80% 50%;
+    --primary: 152 98% 40%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 185 90% 60%;
+    --primary-glow: 152 90% 55%;
 
     --secondary: 210 25% 15%;
     --secondary-foreground: 0 0% 98%;
@@ -92,10 +92,10 @@ All colors MUST be HSL.
     --input: 210 25% 20%;
     --ring: 185 80% 50%;
     
-    --gradient-primary: linear-gradient(135deg, hsl(175, 75%, 45%), hsl(210, 80%, 50%));
-    --gradient-hero: linear-gradient(180deg, hsl(210, 25%, 8%), hsl(185, 50%, 15%));
-    --shadow-soft: 0 4px 20px -4px hsl(185 80% 50% / 0.25);
-    --shadow-elevated: 0 10px 40px -10px hsl(185 80% 50% / 0.35);
+    --gradient-primary: linear-gradient(135deg, hsl(152, 95%, 35%), hsl(210, 80%, 50%));
+    --gradient-hero: linear-gradient(180deg, hsl(210, 25%, 8%), hsl(152, 50%, 15%));
+    --shadow-soft: 0 4px 20px -4px hsl(152 98% 40% / 0.25);
+    --shadow-elevated: 0 10px 40px -10px hsl(152 98% 40% / 0.35);
   }
 }
 
