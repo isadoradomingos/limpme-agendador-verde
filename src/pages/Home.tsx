@@ -37,7 +37,7 @@ const Home = () => {
                 onClick={() => navigate("/auth")}
               >
                 <Calendar className="w-5 h-5" />
-                Agendar limpeza
+                Agendamentos
               </Button>
 
               <Button
