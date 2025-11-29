@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { toast } from "sonner";
+import ProgressSteps from "@/components/ProgressSteps";
 
 const technicians = [
   {
@@ -58,7 +59,10 @@ const SelectTechnician = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero pb-8">
-      <div className="px-6 py-8">
+      {/* Progress Steps */}
+      <ProgressSteps currentStep={3} totalSteps={3} />
+      
+      <div className="px-6 py-4">
         <div className="mx-auto max-w-md">
           {/* Header */}
           <div className="mb-8 animate-fade-in">

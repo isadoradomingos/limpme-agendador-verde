@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import ProgressSteps from "@/components/ProgressSteps";
 
 const timeSlots = [
   "08:00", "09:00", "10:00", "11:00", 
@@ -35,7 +36,10 @@ const SelectDateTime = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero pb-8">
-      <div className="px-6 py-8">
+      {/* Progress Steps */}
+      <ProgressSteps currentStep={2} totalSteps={3} />
+      
+      <div className="px-6 py-4">
         <div className="mx-auto max-w-md">
           {/* Header */}
           <div className="mb-8 animate-fade-in">
